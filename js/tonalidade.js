@@ -15,7 +15,7 @@ const tempo = document.querySelector('.tempo')
 const containerControle = document.querySelector('.container-controle')
 const menuBack = document.querySelector('.menu-back')
 
-var time = 120;
+var time = 90;
 var opcao = 0;
 var resultado = 0;
 var isBemol = false

@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    writing-mode: vertical-lr;
+}
+
+.controle {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.pentagrama {
+    margin-left: 5vw; /* Reduzido para 5% da largura da viewport */
+}
+
+.line, .space {
+    width: 1px;
+    height: 30px; 
+    display: inline-block;
+    vertical-align: middle;
+
+}
+
+.line {
+    
+    text-align: center; /* Ajuste o alinhamento do texto conforme necessário */
+   
+    background-image: url('../images/leitura_notas/linha_pent.png');
+    background-size: cover; /* Ajusta o tamanho da imagem de fundo conforme necessário */
+    background-position: center; /* Ajusta a posição da imagem de fundo*/
+   
+}
+
+.space {
+    background-color: white;
+}
+
+.nota{
+    background-image: url(../images/leitura_notas/semibreve.png);
+    width:30px;
+    height:30px;
+    z-index: 1;
+    background-size: 100%;
+    transition: all 0.1s;
+}
+.cortada{
+    background-image: url(../images/leitura_notas/semibreve-c.png);
+
+    
+}
+.nota-container{
+    display: flex;
+    justify-content: end;
+}
+.jogar{
+    display:none;
+}
+
+.clave-sol img,.clave-fa img,.clave-do img{
+    width: 60px;
+    height:60px;
+
+}
+
+.clave-sol,.clave-fa,.clave-do{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:0;
+
+}
+.imagemClave{
+    width:70px;
+    height:70px;
+}
+.result{
+    display: none;
+    
+    justify-content: center;
+    align-items: center;
+    
+}
+
+

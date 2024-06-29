@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/leitura-notas.css">
+
+    <script defer src="js/bootstrap.bundle.min.js"></script>
+
+    <title>App da música</title>
+</head>
+<body>
+    <div class="selecione-clave col-10">
+        <div class="container-claves d-flex">
+            <div class="col-4 clave-sol clave">
+                <img src="images/leitura_notas/sol0.png" alt="" class="img-fluid w-100">
+                <h6>Clave de Sol</h6>
+            </div>
+            <div class="col-4 clave-do clave ">
+                <img src="images/leitura_notas/do.png" alt="" class="img-fluid w-100">
+                <h6>Clave de Dó</h6>
+            </div>
+            <div class="col-4 clave-fa clave">
+                <img src="images/leitura_notas/fa0.png" alt="" class="img-fluid w-100">
+                <h6>Clave de Fá</h6>
+            </div>
+        </div>
+        <div class="btn btn-primary d-flex justify-content-center botao-pronto">Pronto</div>
+        <h3 class="text-center">Digite a clave do seu intrumento</h3>
+    </div>
+    <div class="jogar col-12">
+    <div class="controle">
+        <button class="btn btn-secondary col-1 opcaoControle"><h4>Dó</h4></button>
+
+        <button class="btn btn-secondary col-1 opcaoControle"><h4>Ré</h4></button>
+            
+        <button class="btn btn-secondary col-1 opcaoControle"><h4>Mi</h4></button>
+            
+        <button class="btn btn-secondary col-1 opcaoControle"><h4>Fá</h4></button>
+            
+        <button class="btn btn-secondary col-1 opcaoControle"><h4>Sol</h4></button>
+            
+        <button class="btn btn-secondary col-1 opcaoControle"><h4>Lá</h4></button>
+           
+        <button class="btn btn-secondary col-1 opcaoControle"><h4>Si</h4></button>
+
+        <button class="btn btn-primary col-2 ">
+            <div class="tempo">Tempo: 90</div>
+            <div class="certos">Certos: 0</div>
+            <div class="errados">Errados: 0</div>
+        </button>
+        <button class="btn btn-warning col-2 ">
+            <div class="clave-escolhida"></div>
+        </button>
+    </div>
+    
+    <div class="pentagrama ml-1">
+        <!-- Exemplo de estrutura do pentagrama -->
+        
+        <div class="pent row"><div class="space col-12 nota-container "></div></div> <!-- Espaço vazio do pentagrama -->
+
+        <div class="pent row"><div class="space col-12 nota-container"></div></div> <!-- Espaço vazio do pentagrama -->
+        <div class="pent row"><div class="space col-12 nota-container"></div></div> <!-- Espaço vazio do pentagrama -->
+        <div class="pent row"><div class="line col-12 nota-container"></div></div> <!-- Linha do pentagrama -->
+        <div class="pent row"><div class="space col-12 nota-container"></div></div> <!-- Espaço vazio do pentagrama -->
+        <div class="pent row"><div class="line col-12 nota-container"></div></div> <!-- Linha do pentagrama -->
+        <div class="pent row"><div class="space col-12 nota-container"></div></div> <!-- Espaço vazio do pentagrama -->
+        <div class="pent row"><div class="line col-12 nota-container"></div></div> <!-- Linha do pentagrama -->
+        <div class="pent row"><div class="space col-12 nota-container"></div></div> <!-- Espaço vazio do pentagrama -->
+        <div class="pent row"><div class="line col-12 nota-container"></div></div> <!-- Linha do pentagrama -->
+        <div class="pent row"><div class="space col-12 nota-container"></div></div> <!-- Espaço vazio do pentagrama -->
+        <div class="pent row"><div class="line col-12 nota-container"></div></div> <!-- Linha do pentagrama -->
+        <div class="pent row"><div class="space col-12 nota-container "></div></div> <!-- Espaço vazio do pentagrama -->
+       
+    </div>
+    
+    </div>
+    <div class="result">
+        
+        <div class="table table-primary" >
+        
+            <div class="certos">Certos: 0</div>
+            <div class="errados">Errados: 0</div>
+            <div class="fs-2">Tabela de Resultado</div>
+        </div>
+        
+        
+            
+    </div>
+    <script src="js/leituraNota.js"></script>
+</body>
+</html>
