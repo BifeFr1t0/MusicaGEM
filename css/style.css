@@ -1,0 +1,94 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0;
+    padding:0;
+    height:100vh;
+}
+a{
+    background-color: cornflowerblue;
+    color:black;
+    border-radius: 7%;
+    font-size:2.5vh;
+    font-weight: bold;
+}
+h2{
+    font-size: 3vh;
+}
+a:hover{
+    transition: 0.5s;
+    background-color: rgb(128, 169, 245);
+    text-decoration: none;
+}
+p{
+    font-size: 2vh;
+}
+h3{
+    font-size:3vh;
+}
+
+.menu-choices{
+    justify-content: space-evenly;
+    background-color: rgb(235, 235, 235);
+    padding:1vw;
+}
+
+.menu-choices:hover{
+    background-color: rgb(192, 214, 255);
+    transition: 0.5s;
+}
+
+label{
+    font-size:2.6vh;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.botao-pronto{
+    height:7vh;
+    color: rgba(0, 0, 0, 0.226);
+}
+.control-tonalidade{
+    justify-content: space-evenly;
+    
+}
+.opcaoControle{
+    display: none;
+}
+.bemol{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.jogar{
+    
+    justify-content: center;
+    align-items: center;
+}
+.resposta{
+    
+    justify-content: center;
+    align-items: center;
+    display:none;
+}
+.maior{
+    display: none;
+}
+
+.do{
+    display:none;
+}
+.sol{
+    display:none;
+}
+.fa{
+    display:none;
+}
+.question-do,.question-sol,.question-fa{
+    display: flex;
+    justify-content: center;
+}
+.container-controle{
+    display: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.menu-back{
+    display: none;
+}
