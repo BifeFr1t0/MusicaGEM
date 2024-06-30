@@ -41,7 +41,7 @@
     height:30px;
     z-index: 1;
     background-size: 100%;
-    transition: all 0.1s;
+    transition: all 0.4s;
 }
 .cortada{
     background-image: url(../images/leitura_notas/semibreve-c.png);
@@ -72,13 +72,11 @@
 .imagemClave{
     width:70px;
     height:70px;
+    display:none
 }
-.result{
+.menu-placar{
     display: none;
-    
-    justify-content: center;
-    align-items: center;
-    
 }
-
-
+table{
+    font-size:3vh;
+}

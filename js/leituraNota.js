@@ -3,14 +3,14 @@ const opcaoControle = document.querySelectorAll('.opcaoControle');
 const  claves = document.querySelectorAll('.clave');
 const botao = document.querySelector('.botao-pronto');
 const tempo = document.querySelector('.tempo');
-const respostascerta = document.querySelector('.certos');
-const respostaserrada = document.querySelector('.errados');
+const respostascerta = document.querySelectorAll('.certos');
+const respostaserrada = document.querySelectorAll('.errados');
 const selecioneClave = document.querySelector('.selecione-clave');
 const jogar = document.querySelector('.jogar');
 const claveEscolhida = document.querySelector('.clave-escolhida');
-const result = document.querySelector('.result');
-var claveChoose = document.createElement('img')
-claveChoose.classList.add('img-fluid','w-25','imagemClave')
+const result = document.querySelector('.menu-placar');
+const imagemClave = document.querySelectorAll('.imagemClave')
+
 
 var resultado = -10
 var opcao = -10
@@ -40,18 +40,17 @@ botao.addEventListener('click', () => {
     resultado=opcao
     selecioneClave.style.display = 'none';
     jogar.style.display = 'block';
-    switch(resultado){
+    switch (resultado) {
         case 0:
-            claveChoose.setAttribute('src',"../images/leitura_notas/sol0.png")
+            imagemClave[0].style.display = 'block';
             break;
         case 1:
-            claveChoose.setAttribute('src',"../images/leitura_notas/do.png")
+            imagemClave[1].style.display = 'block';
             break;
         case 2:
-            claveChoose.setAttribute('src',"../images/leitura_notas/fa0.png")
+            imagemClave[2].style.display = 'block';
             break;
     }
-    claveEscolhida.appendChild(claveChoose)
     comecarJogo()
 })
 notaContainer.forEach((element,index)=> {
@@ -76,21 +75,19 @@ function comecarJogo(){
     
     object[aleatorio].style.display = 'flex'
     setInterval(() => {
-        object[aleatorio].style.transform = `translateY(-${y+=30}px)`
         if(y>1000){
             object[aleatorio].style.display = 'none'
-            y=-90
+            y=-30
+            object[aleatorio].style.transition = `all 0s`
+            object[aleatorio].style.transform = `translateY(-${y+=30}px)`
+            object[aleatorio].style.transition = `all 0.4s`
             aleatorio = Math.floor(Math.random()*12)
             alreadyPlayed=false
             object[aleatorio].style.display = 'flex'
         }
+        object[aleatorio].style.transform = `translateY(-${y+=30}px)`
+        
     },difficulty);
-
-//     setInterval(() => {
-//     y=-30
-//     aleatorio = Math.floor(Math.random()*12)
-//     object[aleatorio].style.display = 'flex'
-// }, 6500);
 
     opcaoControle.forEach((element)=>{
         element.addEventListener('click',()=>{
@@ -103,7 +100,9 @@ function comecarJogo(){
         tempo.innerText = "Tempo: "+time
         if(time==0){
             jogar.style.display='none'
-            result.style.display='flex'
+            result.style.display='block'
+            respostaserrada[1].innerText = "Erradas: "+respostasErradas
+            respostascerta[1].innerText = "Certos: "+respostasCertas
         }
     },1000);
     
@@ -204,12 +203,12 @@ function reconhecerClave(){
     if(alreadyPlayed==false){
         if(transformar == resposta){
             respostasCertas++
-            respostascerta.innerText = "Certos: "+respostasCertas
+            respostascerta[0].innerText = "Certos: "+respostasCertas
             alreadyPlayed=true
         }
         else{
             respostasErradas++
-            respostaserrada.innerText = "Erradas: "+respostasErradas
+            respostaserrada[0].innerText = "Erradas: "+respostasErradas
             alreadyPlayed=true
         }
     }
