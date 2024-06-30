@@ -17,12 +17,12 @@ var opcao = -10
 var transformar = null
 var resposta = null
 var aleatorio = 0
-var difficulty = 150;
+var difficulty = 120;
 var notavalor = -10;
 var respostasCertas=0;
 var respostasErradas = 0
 var time = 90
-
+var alreadyPlayed = 0
 
 claves.forEach((element, index) => {
     element.addEventListener('click', () => {
@@ -73,14 +73,15 @@ var object = document.querySelectorAll('.nota')
 function comecarJogo(){
     var y=-30
     aleatorio = Math.floor(Math.random()*12)
-    var test= aleatorio
+    
     object[aleatorio].style.display = 'flex'
     setInterval(() => {
         object[aleatorio].style.transform = `translateY(-${y+=30}px)`
-        if(y>700){
+        if(y>1000){
             object[aleatorio].style.display = 'none'
             y=-90
             aleatorio = Math.floor(Math.random()*12)
+            alreadyPlayed=false
             object[aleatorio].style.display = 'flex'
         }
     },difficulty);
@@ -125,6 +126,7 @@ function opcaoControl(opcao){
             return 6
         
     }
+    
 }
 function reconhecerClave(){
     switch (aleatorio) {
@@ -199,15 +201,19 @@ function reconhecerClave(){
         
         
     }
+    if(alreadyPlayed==false){
+        if(transformar == resposta){
+            respostasCertas++
+            respostascerta.innerText = "Certos: "+respostasCertas
+            alreadyPlayed=true
+        }
+        else{
+            respostasErradas++
+            respostaserrada.innerText = "Erradas: "+respostasErradas
+            alreadyPlayed=true
+        }
+    }
     
-    if(transformar == resposta){
-        respostasCertas++
-        respostascerta.innerText = "Certos: "+respostasCertas
-    }
-    else{
-        respostasErradas++
-        respostaserrada.innerText = "Erradas: "+respostasErradas
-    }
 }
 
 

@@ -84,7 +84,7 @@ label{
 .question-do,.question-sol,.question-fa{
     display: flex;
     justify-content: center;
-    max-width:100px;
+    max-width:110px;
 }
 .container-controle{
     display: none;
