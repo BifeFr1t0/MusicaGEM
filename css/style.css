@@ -38,6 +38,10 @@ h3{
     background-color: rgb(192, 214, 255);
     transition: 0.5s;
 }
+.menu-choices img{
+    max-width: 80px;
+    
+}
 
 label{
     font-size:2.6vh;
