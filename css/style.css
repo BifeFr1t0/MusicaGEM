@@ -39,7 +39,8 @@ h3{
     transition: 0.5s;
 }
 .menu-choices img{
-    max-width: 80px;
+    max-height: 80px;
+    max-width:70px;
     
 }
 
