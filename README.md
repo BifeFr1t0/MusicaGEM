@@ -1,0 +1,1 @@
+Aplicativo desenvolvido para utilização dos alunos do GEM (Grupo de Estudo Musical) da CCB (Congregação Cristã no Brasil)
