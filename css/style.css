@@ -25,7 +25,7 @@ p{
     font-size: 2vh;
 }
 h3{
-    font-size:3vh;
+    font-size:5.8vw;
 }
 
 .menu-choices{
@@ -39,8 +39,8 @@ h3{
     transition: 0.5s;
 }
 .menu-choices img{
-    max-height: 80px;
-    max-width:70px;
+    max-height: 18vw;
+    max-width:16vw;
     
 }
 
