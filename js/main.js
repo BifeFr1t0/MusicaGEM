@@ -22,6 +22,11 @@ redirectLink.forEach((element,index)=>{
                 window.location.href = 'https://congregacaocristanobrasil.org.br/musica/msa';
             })
             break;
+        case 4:
+            element.addEventListener('click',()=>{
+                window.location.href = 'creditos.html';
+            })
+            break;
     }
     
 

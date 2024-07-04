@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+}
+
+.cont-par{
+    background-color: rgba(96, 153, 228, 0.712);
+    border-radius: 5%;
+}
+
+.cont-soci{
+    background-color: rgba(120, 96, 228, 0.712);
+    border-radius: 5%;
+}
