@@ -1,43 +1,56 @@
 const notaContainer = document.querySelectorAll('.nota-container');
 const opcaoControle = document.querySelectorAll('.opcaoControle');
-const  claves = document.querySelectorAll('.clave');
+const claves = document.querySelectorAll('.clave');
 const botao = document.querySelector('.botao-pronto');
 const tempo = document.querySelector('.tempo');
-const respostascerta = document.querySelectorAll('.certos');
-const respostaserrada = document.querySelectorAll('.errados');
+const respostasCerta = document.querySelectorAll('.certos');
+const respostasErrada = document.querySelectorAll('.errados');
 const selecioneClave = document.querySelector('.selecione-clave');
 const jogar = document.querySelector('.jogar');
-const claveEscolhida = document.querySelector('.clave-escolhida');
 const result = document.querySelector('.menu-placar');
-const imagemClave = document.querySelectorAll('.imagemClave')
+const imagemClave = document.querySelectorAll('.imagemClave');
+const diff = document.querySelectorAll('.dificuldade')
 
-
-var resultado = -10
-var opcao = -10
-var transformar = null
-var resposta = null
-var aleatorio = 0
-var difficulty = 120;
-var notavalor = -10;
-var respostasCertas=0;
-var respostasErradas = 0
-var time = 90
-var alreadyPlayed = 0
+let resultado = -10;
+let resultadoDiff = -10;
+let opcao = -10;
+let transformar = null;
+let resposta = null;
+let aleatorio = 0;
+let difficulty = 120;
+let respostasCertas = 0;
+let respostasErradas = 0;
+let time = 90;
+let alreadyPlayed = false;
+let opcaoDiff = -10
 
 claves.forEach((element, index) => {
     element.addEventListener('click', () => {
         opcao = index;
-        
+
         claves.forEach(btn => {
             btn.style.background = 'transparent';
         });
-       
+
         element.style.background = 'rgba(0, 0, 0, 0.226)';
+    });
+});
+diff.forEach((element, index) => {
+    element.addEventListener('click', () => {
+        opcaoDiff = index;
+
+        diff.forEach(btn => {
+            btn.style.outline = 'transparent';
+        });
+
+        element.style.outline = '4px solid rgba(0, 0, 0, 0.5)';
     });
 });
 
 botao.addEventListener('click', () => {
-    resultado=opcao
+    resultado = opcao;
+    resultadoDiff = opcaoDiff;
+    if(resultado != -10 && resultadoDiff != -10){
     selecioneClave.style.display = 'none';
     jogar.style.display = 'block';
     switch (resultado) {
@@ -51,168 +64,131 @@ botao.addEventListener('click', () => {
             imagemClave[2].style.display = 'block';
             break;
     }
-    comecarJogo()
-})
-notaContainer.forEach((element,index)=> {
-  
-    var nota = document.createElement('div');
+    switch (resultadoDiff) {
+        case 0:
+            difficulty= 120
+            break;
+    
+        case 1:
+            difficulty= 60
+            break;
+    }
+    
+    comecarJogo();
+}
+});
+
+notaContainer.forEach((element, index) => {
+    let nota = document.createElement('div');
     nota.classList.add('nota');
     element.appendChild(nota);
-    // nota.style.display = 'none';
 
-    if(index ==0 || index == 12){
-        nota.classList.add('cortada')
+    if (index === 0 || index === 12) {
+        nota.classList.add('cortada');
     }
     nota.style.display = 'none';
 });
 
-var object = document.querySelectorAll('.nota')
+const object = document.querySelectorAll('.nota');
 
+function comecarJogo() {
+    let y = -30;
+    aleatorio = Math.floor(Math.random() * 12);
 
-function comecarJogo(){
-    var y=-30
-    aleatorio = Math.floor(Math.random()*12)
-    
-    object[aleatorio].style.display = 'flex'
+    object[aleatorio].style.display = 'flex';
     setInterval(() => {
-        if(y>1000){
-            object[aleatorio].style.display = 'none'
-            y=-30
-            object[aleatorio].style.transition = `all 0s`
-            object[aleatorio].style.transform = `translateY(-${y+=30}px)`
-            object[aleatorio].style.transition = `all 0.4s`
-            aleatorio = Math.floor(Math.random()*12)
-            alreadyPlayed=false
-            object[aleatorio].style.display = 'flex'
+        object[aleatorio].style.transition = `all 0.4s`;
+        if (y > 1000) {
+            object[aleatorio].style.display = 'none';
+            y = -30;
+            object[aleatorio].style.transition = `all 0s`;
+            object[aleatorio].style.transform = `translateY(-${y += 30}px)`;
+            object[aleatorio].style.transition = `all 0.4s`;
+            aleatorio = Math.floor(Math.random() * 12);
+            alreadyPlayed = false;
+            object[aleatorio].style.display = 'flex';
         }
-        object[aleatorio].style.transform = `translateY(-${y+=30}px)`
-        
-    },difficulty);
+        object[aleatorio].style.transform = `translateY(-${y += 30}px)`;
+    }, difficulty);
 
-    opcaoControle.forEach((element)=>{
-        element.addEventListener('click',()=>{
-            resposta = opcaoControl(element)
-            reconhecerClave()
-        })
-    })
+    opcaoControle.forEach((element) => {
+        element.addEventListener('click', () => {
+            resposta = opcaoControleClick(element);
+            reconhecerClave();
+        });
+    });
+
     setInterval(() => {
-        time--
-        tempo.innerText = "Tempo: "+time
-        if(time==0){
-            jogar.style.display='none'
-            result.style.display='block'
-            respostaserrada[1].innerText = "Erradas: "+respostasErradas
-            respostascerta[1].innerText = "Certos: "+respostasCertas
+        time--;
+        tempo.innerText = "Tempo: " + time;
+        if (time === 0) {
+            jogar.style.display = 'none';
+            result.style.display = 'block';
+            respostasErrada[1].innerText = "Erradas: " + respostasErradas;
+            respostasCerta[1].innerText = "Certos: " + respostasCertas;
         }
-    },1000);
-    
+    }, 1000);
 }
-function opcaoControl(opcao){
+
+function opcaoControleClick(opcao) {
     switch (opcao.innerText) {
         case "Dó":
-            return 0
+            return 0;
         case "Ré":
-            return 1
+            return 1;
         case "Mi":
-            return 2
+            return 2;
         case "Fá":
-            return 3
+            return 3;
         case "Sol":
-            return 4
+            return 4;
         case "Lá":
-            return 5
+            return 5;
         case "Si":
-            return 6
-        
+            return 6;
     }
-    
 }
-function reconhecerClave(){
+
+function reconhecerClave() {
     switch (aleatorio) {
         case 0:
-            if(resultado==0){transformar= 0}
-            if(resultado==1){transformar= 1}
-            if(resultado==2){transformar= 2}
+        case 7:
+            transformar = resultado === 0 ? 0 : resultado === 1 ? 1 : 2;
             break;
         case 1:
-            if(resultado==0){transformar= 1}
-            if(resultado==1){transformar= 2}
-            if(resultado==2){transformar= 3}
+        case 8:
+            transformar = resultado === 0 ? 1 : resultado === 1 ? 2 : 3;
             break;
         case 2:
-            if(resultado==0){transformar= 2}
-            if(resultado==1){transformar= 3}
-            if(resultado==2){transformar= 4}
+        case 9:
+            transformar = resultado === 0 ? 2 : resultado === 1 ? 3 : 4;
             break;
         case 3:
-            if(resultado==0){transformar= 3}
-            if(resultado==1){transformar= 4}
-            if(resultado==2){transformar= 5}
+        case 10:
+            transformar = resultado === 0 ? 3 : resultado === 1 ? 4 : 5;
             break;
         case 4:
-            if(resultado==0){transformar= 4}
-            if(resultado==1){transformar= 5}
-            if(resultado==2){transformar= 6}
+        case 11:
+            transformar = resultado === 0 ? 4 : resultado === 1 ? 5 : 6;
             break;
         case 5:
-            if(resultado==0){transformar= 5}
-            if(resultado==1){transformar= 6}
-            if(resultado==2){transformar= 0}
+        case 12:
+            transformar = resultado === 0 ? 5 : resultado === 1 ? 6 : 0;
             break;
         case 6:
-            if(resultado==0){transformar= 6}
-            if(resultado==1){transformar= 0}
-            if(resultado==2){transformar= 1}
+            transformar = resultado === 0 ? 6 : resultado === 1 ? 0 : 1;
             break;
-        case 7:
-            if(resultado==0){transformar= 0}
-            if(resultado==1){transformar= 1}
-            if(resultado==2){transformar= 2}
-            break;
-        case 8:
-            if(resultado==0){transformar= 1}
-            if(resultado==1){transformar= 2}
-            if(resultado==2){transformar= 3}
-            break;
-        case 9:
-            if(resultado==0){transformar= 2}
-            if(resultado==1){transformar= 3}
-            if(resultado==2){transformar= 4}
-            break;
-        case 10:
-            if(resultado==0){transformar= 3}
-            if(resultado==1){transformar= 4}
-            if(resultado==2){transformar= 5}
-            break;
-        case 11:
-            if(resultado==0){transformar= 4}
-            if(resultado==1){transformar= 5}
-            if(resultado==2){transformar= 6}
-            break;
-        case 12:
-            if(resultado==0){transformar= 5}
-            if(resultado==1){transformar= 6}
-            if(resultado==2){transformar= 0}
-            break;
-       
-            
-        
-        
-        
     }
-    if(alreadyPlayed==false){
-        if(transformar == resposta){
-            respostasCertas++
-            respostascerta[0].innerText = "Certos: "+respostasCertas
-            alreadyPlayed=true
-        }
-        else{
-            respostasErradas++
-            respostaserrada[0].innerText = "Erradas: "+respostasErradas
-            alreadyPlayed=true
+
+    if (!alreadyPlayed) {
+        if (transformar === resposta) {
+            respostasCertas++;
+            respostasCerta[0].innerText = "Certos: " + respostasCertas;
+            alreadyPlayed = true;
+        } else {
+            respostasErradas++;
+            respostasErrada[0].innerText = "Erradas: " + respostasErradas;
+            alreadyPlayed = true;
         }
     }
-    
 }
-
-

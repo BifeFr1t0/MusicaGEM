@@ -136,18 +136,21 @@ claveOpcao.forEach((element, index) => {
 
 
 botao.addEventListener('click', () => {
-    resultado = opcao;
-    // console.log(resultado)
-    dClave.style.display = 'none'
-    resposta.style.display='flex'
-    containerControle.style.display='flex'
-    body.style.writingMode = 'vertical-lr'
-    oControle.forEach(btn => {
-        btn.style.display = 'flex';
-    });
+    setTimeout(() => {
+        resultado = opcao;
+        dClave.style.display = 'none'
+        resposta.style.display='flex'
+        containerControle.style.display='flex'
+        body.style.writingMode = 'vertical-lr'
+        oControle.forEach(btn => {
+            btn.style.display = 'flex';
+        });
+        chamarClave()
+        iniciarTempo()
+    }, 150);
     
-    chamarClave()
-    iniciarTempo()
+    
+    
 });
 
 oControle.forEach((element)=>{
