@@ -105,3 +105,6 @@ table{
 .dificil{
     color: rgb(255, 0, 0)
 }
+.gif{
+    background-image: url(../images/leitura_notas/explosao.gif);
+}

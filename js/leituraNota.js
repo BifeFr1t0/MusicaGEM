@@ -23,6 +23,8 @@ let respostasErradas = 0;
 let time = 90;
 let alreadyPlayed = false;
 let opcaoDiff = -10
+let certo = false
+
 
 claves.forEach((element, index) => {
     element.addEventListener('click', () => {
@@ -98,6 +100,23 @@ function comecarJogo() {
     object[aleatorio].style.display = 'flex';
     setInterval(() => {
         object[aleatorio].style.transition = `all 0.4s`;
+
+        if(alreadyPlayed && certo){
+            object[aleatorio].classList.add('gif')
+        setTimeout(() => {
+            object[aleatorio].style.display = 'none';
+            y = -30;
+            object[aleatorio].style.transition = `all 0s`;
+            object[aleatorio].style.transform = `translateY(-${y += 30}px)`;
+            object[aleatorio].style.transition = `all 0.4s`;
+            aleatorio = Math.floor(Math.random() * 12);
+            alreadyPlayed = false;
+            object[aleatorio].classList.remove('gif')
+            object[aleatorio].style.display = 'flex';
+            
+        },500);
+    }   
+
         if (y > 1000) {
             object[aleatorio].style.display = 'none';
             y = -30;
@@ -106,8 +125,11 @@ function comecarJogo() {
             object[aleatorio].style.transition = `all 0.4s`;
             aleatorio = Math.floor(Math.random() * 12);
             alreadyPlayed = false;
+            
             object[aleatorio].style.display = 'flex';
         }
+        
+
         object[aleatorio].style.transform = `translateY(-${y += 30}px)`;
     }, difficulty);
 
@@ -185,9 +207,11 @@ function reconhecerClave() {
             respostasCertas++;
             respostasCerta[0].innerText = "Certos: " + respostasCertas;
             alreadyPlayed = true;
+            certo = true
         } else {
             respostasErradas++;
             respostasErrada[0].innerText = "Erradas: " + respostasErradas;
+            certo = false
             alreadyPlayed = true;
         }
     }
