@@ -31,20 +31,34 @@ finalSimC = null
 formulaOpcao.forEach((element, index) => {
     element.addEventListener('click', () => {
         
+        formulaOpcao.forEach(btn => {
+            btn.classList.remove('active')
+        });
+       
+        element.classList.add('active')
         opcaoFormula = index;
         form.innerText = element.innerText
     });
 });
 valorOpcao.forEach((element, index) => {
     element.addEventListener('click', () => {
-        
+        valorOpcao.forEach(btn => {
+            btn.classList.remove('active')
+        });
+       
+        element.classList.add('active')
         opcaoValor = index;
         mov.innerText = element.innerText
     });
 });
 valorSimplesComposto.forEach((element, index) => {
     element.addEventListener('click', () => {
-        
+
+        valorSimplesComposto.forEach(btn => {
+            btn.classList.remove('active')
+        });
+       
+        element.classList.add('active')
         opcaoSimComp = index;
         val.innerText = element.innerText
     });

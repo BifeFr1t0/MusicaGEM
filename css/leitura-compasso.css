@@ -21,6 +21,10 @@ body{
     justify-content: space-around;
     align-items: end;
     background-color: rgb(206, 206, 206);
+    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 3%;
+    padding-bottom: 1vw;
+    
 }
 
 .container-valor,.container-formula{
@@ -42,6 +46,9 @@ h2{
     min-height:5vh;
     background-color: rgb(235, 234, 234);
     justify-content: space-between;
+    border-top-left-radius: 6%;
+    border-top-right-radius: 6%;
+    margin-top: -8vw;
 }
 
 .result{

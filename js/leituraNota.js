@@ -99,37 +99,38 @@ function comecarJogo() {
 
     object[aleatorio].style.display = 'flex';
     setInterval(() => {
-        object[aleatorio].style.transition = `all 0.4s`;
-
         if(alreadyPlayed && certo){
             object[aleatorio].classList.add('gif')
-        setTimeout(() => {
-            object[aleatorio].style.display = 'none';
-            y = -30;
-            object[aleatorio].style.transition = `all 0s`;
-            object[aleatorio].style.transform = `translateY(-${y += 30}px)`;
-            object[aleatorio].style.transition = `all 0.4s`;
-            aleatorio = Math.floor(Math.random() * 12);
-            alreadyPlayed = false;
-            object[aleatorio].classList.remove('gif')
-            object[aleatorio].style.display = 'flex';
-            
-        },500);
-    }   
+            setTimeout(() => {
+                object[aleatorio].style.display = 'none'
+                y = -30;
+                alreadyPlayed = false;
+                
+                object[aleatorio].classList.remove('gif')
+                aleatorio = Math.floor(Math.random() * 12);
+                object[aleatorio].style.display = 'flex';
+                
+            },280);
+        }
+    
+    },350);
+    setInterval(() => {
+        
+        object[aleatorio].style.transition = `all 0.4s`;
 
         if (y > 1000) {
             object[aleatorio].style.display = 'none';
-            y = -30;
-            object[aleatorio].style.transition = `all 0s`;
-            object[aleatorio].style.transform = `translateY(-${y += 30}px)`;
-            object[aleatorio].style.transition = `all 0.4s`;
-            aleatorio = Math.floor(Math.random() * 12);
-            alreadyPlayed = false;
             
+            y = -30;
+            object[aleatorio].classList.remove('gif')
+            alreadyPlayed = false;
+            aleatorio = Math.floor(Math.random() * 12);
             object[aleatorio].style.display = 'flex';
         }
         
-
+        if(y == -30){
+            object[aleatorio].style.transition = `all 0s`;
+        }
         object[aleatorio].style.transform = `translateY(-${y += 30}px)`;
     }, difficulty);
 
